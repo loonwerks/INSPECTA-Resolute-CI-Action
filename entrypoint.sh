@@ -10,9 +10,6 @@ echo "exit-on-warning: $7"
 echo "supplementary-aadl: $8"
 echo "attestation-path: $9"
 
-opam init -y
-eval $(opam env)
-
 AADL_DIR=${GITHUB_WORKSPACE}/$3
 
 runCommand=(osate -application com.rockwellcollins.atc.resolute.cli.Resolute)

@@ -8,7 +8,7 @@ echo "validation-only: $5"
 echo "csv-output: $6"
 echo "exit-on-warning: $7"
 echo "supplementary-aadl: $8"
-echo "attestation_path: $9"
+echo "attestation-path: $9"
 
 eval $(opam env)
 
@@ -45,6 +45,8 @@ fi
 
 runCommand+=(-o ${GITHUB_WORKSPACE}/$2)
 runCommand+=(-e)
+
+echo "run command: ${runCommand[@]}"
 
 xvfb-run -e /dev/stdout -s "-screen 0 1280x1024x24 -ac -nolisten tcp -nolisten unix" "${runCommand[@]}"
 

@@ -4,7 +4,7 @@ set -Eeuxo pipefail
 
 : "${workspace_location:=software/assurance}"
 : "${component_to_analyze:=ardupilot_assurance::ArduPilot.i}"
-: "${project_path:=}"
+: "${project_path:=.}"
 : "${output_path:=software/assurance/resolute.json}"
 : "${validation_only:=}"
 : "${csv_output:=}"

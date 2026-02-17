@@ -21,15 +21,15 @@ if [[ -n $4 ]]; then
 	AADL_DIR=${AADL_DIR}/$4
 fi
 
-if [ "XX $5" = 'XX "true"' ] ; then
+if [[ "$5" = "true" ]] ; then
 	runCommand+=(-validationOnly)
 fi
 
-if [ "XX $6" = 'XX "true"' ]; then
+if [[ "$6" = "true" ]] ; then
 	runCommand+=(-csv)
 fi
 
-if [ "XX $7" = 'XX "true"' ]; then
+if [[ "$7" = "true" ]] ; then
 	runCommand+=(-exitOnValidationWarning)
 fi
 
@@ -57,7 +57,7 @@ analysisStatus=$(jq .status ${GITHUB_WORKSPACE}/$2)
 echo "analysisStatus: $analysisStatus"
 if [ "XX $analysisStatus" = 'XX "Analysis Completed"' ]; then
 	claimsTrue=$(jq "[.results[] | .status] | all" ${GITHUB_WORKSPACE}/$2)
-	if [ "XX $claimsTrue" = 'XX "true"' ]; then
+	if [[ "$claimsTrue" = "true" ]]; then
 		exitStatus=0
 	fi
 fi

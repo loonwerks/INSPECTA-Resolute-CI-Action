@@ -52,15 +52,15 @@ echo "timestamp=$(jq .date ${GITHUB_WORKSPACE}/$2)" >> $GITHUB_OUTPUT
 echo "status=$(jq .status ${GITHUB_WORKSPACE}/$2)" >> $GITHUB_OUTPUT
 echo "status-messages=$(jq .statusMessages ${GITHUB_WORKSPACE}/$2)" >> $GITHUB_OUTPUT
 
-exitStatus=1
-analysisStatus=$(jq .status ${GITHUB_WORKSPACE}/$2)
+EXIT_CODE=1
+analysisStatus="$(jq .status ${GITHUB_WORKSPACE}/$2)"
 echo "analysisStatus: $analysisStatus"
 if [ "XX $analysisStatus" = 'XX "Analysis Completed"' ]; then
 	claimsTrue=$(jq "[.results[] | .status] | all" ${GITHUB_WORKSPACE}/$2)
 	if [[ "$claimsTrue" = "true" ]]; then
-		exitStatus=0
+		EXIT_CODE=0
 	fi
 fi
 
-echo "exitStatus: $exitStatus"
-exit $exitStatus
+echo "status-code=$EXIT_CODE" >> $GITHUB_OUTPUT
+exit $EXIT_CODE

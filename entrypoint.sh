@@ -10,15 +10,16 @@ echo "exit-on-warning: $7"
 echo "supplementary-aadl: $8"
 echo "attestation-path: $9"
 
-AADL_DIR=${GITHUB_WORKSPACE}/$3
+ASSURANCE_CASE_ROOT=${GITHUB_WORKSPACE}/$3
+
+export ASSURANCE_CASE_ROOT=${ASSURANCE_CASE_ROOT}
 
 runCommand=(osate -application com.rockwellcollins.atc.resolute.cli.Resolute)
 
-runCommand+=( -noSplash -data ${AADL_DIR} -compImpl $1)
+runCommand+=( -noSplash -data ${ASSURANCE_CASE_ROOT} -compImpl $1)
 
 if [[ -n $4 ]]; then
 	runCommand+=(-p $4)
-	AADL_DIR=${AADL_DIR}/$4
 fi
 
 if [[ "$5" = "true" ]] ; then

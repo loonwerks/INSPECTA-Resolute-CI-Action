@@ -18,6 +18,6 @@ docker run --platform linux/amd64 --rm -v ../INSPECTA-demo:${GITHUB_WORKSPACE} \
     -e GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
     -e GITHUB_OUTPUT='/dev/stdout' \
     --entrypoint ./home/runner/entrypoint.sh \
-    ghcr.io/loonwerks/inspecta-resolute-ci-action-container:main-6f4d4d6 \
+    ghcr.io/loonwerks/inspecta-resolute-ci-action-container:main-ce35bfc \
     "${component_to_analyze}" "${output_path}" "${workspace_location}" "${project_path}" \
     "${validation_only}" "${csv_output}" "${exit_on_warning}" "${supplementary_aadl}" "${attestation_path}"
